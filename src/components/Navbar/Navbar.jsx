@@ -1,25 +1,44 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-hot-toast";
 
 const Navbar = () => {
-  const {user} = useAuth();
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        console.log("User Logged Out");
+        toast.success(`User Logged Out Successfully!`);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   const navLinks = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
-        <NavLink to="/login">Login</NavLink>
-      </li>
-      <li>
-        <NavLink to="/register">Register</NavLink>
-      </li>
-      <li>
-        <NavLink to="/allCraft">All Craft</NavLink>
-      </li>
-      <li>
-        <NavLink to="/myCraft">My Craft</NavLink>
-      </li>
+
+      {!user && (
+        <li>
+          <NavLink to="/register">Register</NavLink>
+        </li>
+      )}
+
+      {user && (
+        <li>
+          <NavLink to="/allCraft">All Craft</NavLink>
+        </li>
+      )}
+      {user && (
+        <li>
+          <NavLink to="/myCraft">My Craft</NavLink>
+        </li>
+      )}
+
+      
     </>
   );
   return (
@@ -59,36 +78,41 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <div className="dropdown dropdown-end tooltip tooltip-left" data-tip={user?.displayName}>
+        {user ? (
           <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
+            className="dropdown dropdown-end tooltip tooltip-left"
+            data-tip={user?.displayName}
           >
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src={user?.photoURL}
-              />
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img alt="photo" src={user?.photoURL} />
+              </div>
             </div>
+
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <a className="justify-between">Profile</a>
+              </li>
+              <li>
+                <a>Settings</a>
+              </li>
+              <li>
+                <a onClick={handleLogout}>Logout</a>
+              </li>
+            </ul>
           </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-          >
-            <li>
-              <a className="justify-between">
-                Profile
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
-        </div>
+        ) : (
+          <Link to="/login" className="btn">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

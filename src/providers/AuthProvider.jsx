@@ -1,6 +1,7 @@
-import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { createContext, useState } from "react";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
+import PropTypes from 'prop-types';
 
 export const AuthContext = createContext();
 
@@ -12,13 +13,29 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const createUser = (email, password) => {
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
+
+    const loginUser = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
     const googleLogin = () => {
-        // setLoading(true);
+        setLoading(true);
         return signInWithPopup(auth, googleProvider)
     }
 
     const githubLogin = () => {
+        setLoading(true);
         return signInWithPopup(auth, githubProvider);
+    }
+
+    const logout = () => {
+        setLoading(true);
+        return signOut(auth);
     }
 
 
@@ -26,9 +43,28 @@ const AuthProvider = ({children}) => {
         user,
         setUser,
         googleLogin,
-        githubLogin
+        githubLogin,
+        loading,
+        createUser,
+        loginUser,
+        logout
 
     }
+
+    useEffect(() => {
+        setLoading(false);
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            if(currentUser){
+                setUser(currentUser);
+                setLoading(false)
+            } else{
+                setUser(null);
+            }
+        });
+        return () => {
+            unsubscribe();
+        }
+     }, [])
 
     return (
         <AuthContext.Provider value={authInfo}>
@@ -38,3 +74,7 @@ const AuthProvider = ({children}) => {
 };
 
 export default AuthProvider;
+
+AuthProvider.propTypes  = {
+    children: PropTypes.node
+}
