@@ -12,6 +12,12 @@ const Navbar = () => {
       <li>
         <NavLink to="/register">Register</NavLink>
       </li>
+      <li>
+        <NavLink to="/allCraft">All Craft</NavLink>
+      </li>
+      <li>
+        <NavLink to="/myCraft">My Craft</NavLink>
+      </li>
     </>
   );
   return (
@@ -42,7 +48,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="">
-          <p className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-teal-800 bg-clip-text text-transparent "><span className="">Eco</span> Craft</p>
+          <p className="text-md md:text-xl lg:text-3xl font-bold bg-gradient-to-r from-orange-400 to-teal-800 bg-clip-text text-transparent "><span className="">Eco</span> Craft</p>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">

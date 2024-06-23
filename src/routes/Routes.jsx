@@ -4,6 +4,8 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 import Login from './../pages/Login/Login';
 import Register from './../pages/Register/Register';
+import AllCraft from './../pages/AllCraft/AllCraft';
+import MyCraft from './../pages/MyCraft/MyCraft';
 
 export const router = createBrowserRouter([
     {
@@ -22,6 +24,14 @@ export const router = createBrowserRouter([
         {
             path: "/register",
             element: <Register></Register>
+        },
+        {
+            path: "/allCraft",
+            element: <AllCraft></AllCraft>
+        },
+        {
+            path: "/myCraft",
+            element: <MyCraft></MyCraft>
         }
       ]
     },
