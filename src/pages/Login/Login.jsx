@@ -96,7 +96,7 @@ const Login = () => {
             <div className="absolute bg-black opacity-70 inset-0 z-0" />
           </div>
           <div className="w-full py-6 z-20">
-            <h1 className="my-6 lg:text-3xl md:text-xl text-md font-semibold font-semibold">
+            <h1 className="my-6 lg:text-3xl md:text-xl text-md font-semibold">
               Login
             </h1>
             <div className="py-6 space-x-2">
@@ -129,7 +129,7 @@ const Login = () => {
                   {...register("email", { required: true })}
                 />
                 {errors.email && (
-                  <span className="text-red-500 font-semibold text-md font-semibold mt-1">
+                  <span className="text-red-500 text-md font-semibold mt-1">
                     *Email is required
                   </span>
                 )}

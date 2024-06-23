@@ -1,15 +1,26 @@
+import { Slide, Hinge, Flip, JackInTheBox, Zoom } from "react-awesome-reveal";
+
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-tl from-stone-100 via-transparent to-orange-300">
       <div className="footer p-10  text-base-content ">
-        <aside>
-          <img src="https://i.ibb.co/zbLjS7J/wood.png" alt=""  className="w-20"/>
-          <p>
-          Eco Craft is your ultimate destination for exquisite jute and wooden crafts. 
-            <br />
-            We celebrate the beauty of nature through handmade, sustainable creations <br /> that bring a touch of rustic elegance to your home.
-          </p>
-        </aside>
+        <JackInTheBox>
+          <aside>
+            <img
+              src="https://i.ibb.co/zbLjS7J/wood.png"
+              alt=""
+              className="w-20"
+            />
+            <p>
+              Eco Craft is your ultimate destination for exquisite jute and
+              wooden crafts.
+              <br />
+              We celebrate the beauty of nature through handmade, sustainable
+              creations <br /> that bring a touch of rustic elegance to your
+              home.
+            </p>
+          </aside>
+        </JackInTheBox>
         <nav>
           <h6 className="footer-title">Services</h6>
           <a className="link link-hover">Branding</a>
@@ -32,10 +43,11 @@ const Footer = () => {
         </nav>
       </div>
       <div className="footer items-center p-4">
-        <aside className="items-center grid-flow-col">
-          
-          <p>Copyright © 2024 - All right reserved</p>
-        </aside>
+        <Zoom>
+          <aside className="items-center grid-flow-col">
+            <p>Copyright © 2024 - All right reserved</p>
+          </aside>
+        </Zoom>
         <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
           <a>
             <svg

@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
+import { Tooltip } from "react-tooltip";
+import { Slide  } from "react-awesome-reveal";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -37,12 +39,11 @@ const Navbar = () => {
           <NavLink to="/myCraft">My Craft</NavLink>
         </li>
       )}
-
-      
     </>
   );
   return (
     <div className="navbar bg-base-100 fixed z-10">
+      <Tooltip id="my-tooltip" />
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -68,10 +69,12 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <div className="">
-          <p className="text-md md:text-xl lg:text-3xl font-bold bg-gradient-to-r from-orange-400 to-teal-800 bg-clip-text text-transparent ">
-            <span className="">Eco</span> Craft
-          </p>
+        <div>
+          <Slide>
+            <Link to="/" className="text-md md:text-xl lg:text-3xl font-bold bg-gradient-to-r from-orange-400 to-teal-800 bg-clip-text text-transparent ">
+              <span className="">Eco</span> Craft
+            </Link>
+          </Slide>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -80,8 +83,9 @@ const Navbar = () => {
       <div className="navbar-end">
         {user ? (
           <div
-            className="dropdown dropdown-end tooltip tooltip-left"
-            data-tip={user?.displayName}
+            className="dropdown dropdown-end "
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content={user?.displayName}
           >
             <div
               tabIndex={0}
