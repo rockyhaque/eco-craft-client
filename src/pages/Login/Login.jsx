@@ -1,6 +1,42 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Login = () => {
+
+  const [error, setError] = useState("");
+
+  const {googleLogin, githubLogin, setUser} = useAuth();
+  
+  const handleGoogleLogin = () => {
+    googleLogin()
+    .then(result => {
+      setUser(result.user);
+      console.log(result.user);
+      toast.success("Logged In Successfully 🤩")
+    })
+    .catch((error) => {
+      setError(error.message);
+      toast.error(`Opps! ${error.message}`)
+    });
+    
+  }
+
+  const handleGithubLogin = () => {
+    githubLogin()
+    .then((result) => {
+      setUser(result.user);
+      console.log(result.user);
+      toast.success("Logged In Successfully 🤩")
+      // navigate(location?.state ? location.state : "/");
+    })
+    .catch((error) => {
+      setError(error.message);
+      toast.error(`Opps! ${error.message}`)
+    });
+  }
+
   return (
     <div>
       <section className=" flex items-stretch text-white ">
@@ -40,12 +76,12 @@ const Login = () => {
             Login
             </h1>
             <div className="py-6 space-x-2">
-              <span className="w-28 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white hover:bg-teal-950">
-                Github
-              </span>
-              <span className="w-28 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white hover:bg-orange-950">
+              <button onClick={handleGoogleLogin} className="w-28 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white hover:bg-teal-950">
                 Google
-              </span>
+              </button>
+              <button onClick={handleGithubLogin} className="w-28 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white hover:bg-orange-950">
+                 Github
+              </button>
               
             </div>
             <p className="text-gray-100">or use email your account</p>
