@@ -1,4 +1,4 @@
-import { Slide, Hinge, Flip, JackInTheBox, Zoom } from "react-awesome-reveal";
+import { JackInTheBox, Zoom } from "react-awesome-reveal";
 
 const Footer = () => {
   return (

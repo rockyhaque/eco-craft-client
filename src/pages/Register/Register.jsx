@@ -44,6 +44,7 @@ const Register = () => {
     }
     catch(error){
         setError(error.message);
+        toast.error(`Opps! ${error.message}`);
     }
   };
 

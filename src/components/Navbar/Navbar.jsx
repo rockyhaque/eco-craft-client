@@ -3,9 +3,11 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
 import { Slide  } from "react-awesome-reveal";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
+  const [currentUser, setCurrentUser] = useState(user);
 
   const handleLogout = () => {
     logout()
@@ -17,6 +19,12 @@ const Navbar = () => {
         console.error(error);
       });
   };
+
+  useEffect(() => {
+    setCurrentUser(user);
+  }, [user]) 
+
+
   const navLinks = (
     <>
       <li>
