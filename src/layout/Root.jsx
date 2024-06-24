@@ -4,7 +4,7 @@ import Footer from "../components/Footer/Footer";
 
 const Root = () => {
   return (
-    <div>
+    <div className="font-customLato">
       <div className="h-16">
         <Navbar></Navbar>
       </div>

@@ -6,6 +6,7 @@ const Footer = () => {
       <div className="footer p-10  text-base-content ">
         <JackInTheBox>
           <aside>
+        <h1 className="text-4xl font-bold">Eco Craft</h1>
             <img
               src="https://i.ibb.co/zbLjS7J/wood.png"
               alt=""

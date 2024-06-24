@@ -6,6 +6,10 @@ import Login from './../pages/Login/Login';
 import Register from './../pages/Register/Register';
 import AllCraft from './../pages/AllCraft/AllCraft';
 import MyCraft from './../pages/MyCraft/MyCraft';
+import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
+import AddCraft from "../pages/AddCraft/AddCraft";
+import PrivateRoute from './PrivateRoute';
+
 
 export const router = createBrowserRouter([
     {
@@ -31,8 +35,17 @@ export const router = createBrowserRouter([
         },
         {
             path: "/myCraft",
-            element: <MyCraft></MyCraft>
+            element: <PrivateRoute><MyCraft></MyCraft></PrivateRoute>
+        },
+        {
+            path: "/updateProfile",
+            element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
+        },
+        {
+            path: "/addCraft",
+            element: <PrivateRoute><AddCraft></AddCraft></PrivateRoute>
         }
+
       ]
     },
   ]);

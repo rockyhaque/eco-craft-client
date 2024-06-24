@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { IoEyeOffOutline } from "react-icons/io5";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { updateProfile } from "firebase/auth";
+import { auth } from "../../firebase/firebase.config";
 
 const Register = () => {
   const [error, setError] = useState("");
@@ -13,7 +14,7 @@ const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { googleLogin, githubLogin, setUser, createUser } = useAuth();
+  const { googleLogin, githubLogin, setUser, createUser, setLoading } = useAuth();
 
   //react hook form
   const {
@@ -28,15 +29,21 @@ const Register = () => {
     try{
         // create user in Firebase
         const result = await createUser(email, password);
-
+        
+        setLoading(true);
         // update user profile
-        await updateProfile(result.user, {
+        await updateProfile(auth.currentUser, {
             displayName: name,
             photoURL
         });
 
+ 
         // set user to state
-        setUser(result.user);
+
+        setLoading(false)
+        setUser(auth.currentUser)
+
+        window.location.reload();
 
         // Navigate to home or another page
         navigate("/");

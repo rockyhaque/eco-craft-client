@@ -45,6 +45,7 @@ const AuthProvider = ({children}) => {
         googleLogin,
         githubLogin,
         loading,
+        setLoading,
         createUser,
         loginUser,
         logout
@@ -64,7 +65,7 @@ const AuthProvider = ({children}) => {
         return () => {
             unsubscribe();
         }
-     }, [])
+     }, [user])
 
     return (
         <AuthContext.Provider value={authInfo}>

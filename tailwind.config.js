@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        customLato: ['"Lato", "sans-serif"'],
+        customPlaywrite: ['"Playwrite NG Modern", "cursive"'],
+      }
+    },
   },
   plugins: [
     require('daisyui'),

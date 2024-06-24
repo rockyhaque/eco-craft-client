@@ -3,11 +3,11 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
 import { Slide  } from "react-awesome-reveal";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
-  const [currentUser, setCurrentUser] = useState(user);
+  const { user, logout, loading } = useAuth();
+  // const [currentUser, setCurrentUser] = useState(user);
 
   const handleLogout = () => {
     logout()
@@ -20,9 +20,9 @@ const Navbar = () => {
       });
   };
 
-  useEffect(() => {
-    setCurrentUser(user);
-  }, [user]) 
+  // useEffect(() => {
+  //   setCurrentUser(user);
+  // }, [user]) 
 
 
   const navLinks = (
@@ -47,8 +47,24 @@ const Navbar = () => {
           <NavLink to="/myCraft">My Craft</NavLink>
         </li>
       )}
+      {user && (
+        <li>
+          <NavLink to="/updateProfile">Update Profile</NavLink>
+        </li>
+      )}
+      {user && (
+        <li>
+          <NavLink to="/addCraft">Add Craft</NavLink>
+        </li>
+      )}
+      
     </>
   );
+
+  if(loading){
+    return <span className="loading loading-bars loading-lg"></span>;
+  }
+
   return (
     <div className="navbar bg-base-100 fixed z-10">
       <Tooltip id="my-tooltip" />
@@ -88,6 +104,7 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
+      
       <div className="navbar-end">
         {user ? (
           <div
@@ -113,7 +130,7 @@ const Navbar = () => {
                 <a className="justify-between">Profile</a>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to="/updateProfile">Settings</Link>
               </li>
               <li>
                 <a onClick={handleLogout}>Logout</a>
