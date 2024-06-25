@@ -28,7 +28,7 @@ const Register = () => {
     
     try{
         // create user in Firebase
-        const result = await createUser(email, password);
+        await createUser(email, password);
         
         setLoading(true);
         // update user profile
@@ -41,9 +41,13 @@ const Register = () => {
         // set user to state
 
         setLoading(false)
-        setUser(auth.currentUser)
+        setUser({
+          ...auth.currentUser,
+          displayName: name,
+            photoURL
+        })
 
-        window.location.reload();
+        // window.location.reload();
 
         // Navigate to home or another page
         navigate("/");
