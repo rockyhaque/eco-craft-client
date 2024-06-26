@@ -68,11 +68,11 @@ const Pricing = () => {
             $199.99
           </div>
           <hr />
-          <div className="text-sm my-3">500 GB Storage</div>
+          <div className="text-sm my-3">5% Discount on All Products</div>
           <hr />
-          <div className="text-sm my-3">2 Users Allowed</div>
+          <div className="text-sm my-3">Minimum Purchase Quantity: 10 Items</div>
           <hr />
-          <div className="text-sm my-3">Send up to 3 GB</div>
+          <div className="text-sm my-3">Access to Basic Support</div>
           <hr />
           <a href="#" target="_blank">
             <div className="bg-gradient-base border border-teal-600 hover:bg-white text-white hover:text-teal-600 font-bold uppercase text-xs mt-5 py-2 px-4 rounded cursor-pointer">
@@ -90,11 +90,11 @@ const Pricing = () => {
               $249.99
             </div>
             <hr />
-            <div className="text-sm my-3">1 TB Storage</div>
+            <div className="text-sm my-3">10% Discount on All Products</div>
             <hr />
-            <div className="text-sm my-3">5 Users Allowed</div>
+            <div className="text-sm my-3">Minimum Purchase Quantity: 5 Items</div>
             <hr />
-            <div className="text-sm my-3">Send up to 10 GB</div>
+            <div className="text-sm my-3">Priority Customer Support</div>
             <hr />
             <a href="#" target="_blank">
               <div className="bg-white border border-white hover:bg-transparent text-teal-600 hover:text-white font-bold uppercase text-xs mt-5 py-2 mpx-4 rounded cursor-pointer">
@@ -112,11 +112,11 @@ const Pricing = () => {
             $399.99
           </div>
           <hr />
-          <div className="text-sm my-3">2 TB Storage</div>
+          <div className="text-sm my-3">$39.99/month or $399.99/year</div>
           <hr />
-          <div className="text-sm my-3">10 Users Allowed</div>
+          <div className="text-sm my-3">20% Discount on All Products</div>
           <hr />
-          <div className="text-sm my-3">Send up to 20 GB</div>
+          <div className="text-sm my-3">Free Shipping on All Orders</div>
           <hr />
           <a href="#" target="_blank">
             <div className="bg-gradient-base border border-teal-600 hover:bg-transparent text-white hover:text-teal-600 font-bold uppercase text-xs mt-5 py-2 px-4 rounded cursor-pointer">
