@@ -10,6 +10,7 @@ import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 import AddCraft from "../pages/AddCraft/AddCraft";
 import PrivateRoute from "./PrivateRoute";
 import UpdateMyCraft from "../pages/UpdateMyCraft/UpdateMyCraft";
+import Users from "../pages/Users/Users";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ export const router = createBrowserRouter([
       {
         path: "/allCraft",
         element: <AllCraft></AllCraft>,
+        loader: () => fetch('http://localhost:5000/craft')
       },
       {
         path: "/myCraft",
@@ -60,13 +62,19 @@ export const router = createBrowserRouter([
       {
         path: "/updateMyCraft/:id",
         element: (
-          <PrivateRoute>
+          
             <UpdateMyCraft></UpdateMyCraft>
-          </PrivateRoute>
+          
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/craft/${params.id}`),
       },
+      {
+        path: "/users",
+        element: <PrivateRoute><Users></Users></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/user')
+
+      }
     ],
   },
 ]);

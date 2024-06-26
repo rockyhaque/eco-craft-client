@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import useAuth from "../../hooks/useAuth";
 import { useLoaderData } from "react-router-dom";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
 const UpdateMyCraft = () => {
@@ -10,73 +10,129 @@ const UpdateMyCraft = () => {
 
   console.log(craft);
 
-  const [formData, setFormData] = useState({
-    name: '',
-    rating: 0,
-    category: '',
-    price: 0,
-    customization: '',
-    stockStatus: '',
-    processing_time: '',
-    description: '',
-    craftPhotoURL: ''
-  });
+  const {
+    _id,
+    name,
+    rating,
+    category,
+    price,
+    customization,
+    stockStatus,
+    processing_time,
+    description,
+    craftPhotoURL,
+  } = craft;
 
-  useEffect(() => {
-    if (craft) {
-      setFormData({
-        name: craft.name || '',
-        rating: craft.rating || 0,
-        category: craft.category || '',
-        price: craft.price || 0,
-        customization: craft.customization || '',
-        stockStatus: craft.stockStatus || '',
-        processing_time: craft.processing_time || '',
-        description: craft.description || '',
-        craftPhotoURL: craft.craftPhotoURL || ''
-      });
-    }
-  }, [craft]);
+  // const handleUpdateCraft = (e) => {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const name = form.name.value;
+  //   const rating = form.rating.value;
+  //   const category = form.category.value;
+  //   const price = form.price.value;
+  //   const customization = form.customization.value;
+  //   const stockStatus = form.stockStatus.value;
+  //   const processing_time = form.processing_time.value;
+  //   const description = form.description.value;
+  //   const craftPhotoURL = form.craftPhotoURL.value;
+
+  //   const email = user.email;
+  //   const userName = user.displayName;
+  //   const photoURL = user.photoURL;
+  //   const accountCreation = user.metadata?.creationTime;
+  //   const accountLastSignIn = user.metadata?.lastSignInTime;
+
+  //   const info = {
+  //     name,
+  //     rating,
+  //     category,
+  //     price,
+  //     customization,
+  //     stockStatus,
+  //     processing_time,
+  //     description,
+  //     craftPhotoURL,
+  //     photoURL,
+  //     email,
+  //     userName,
+  //     accountCreation,
+  //     accountLastSignIn,
+  //   };
+
+  //   console.log(info);
+
+  //   // sending data to the server
+  //   fetch(`http://localhost:5000/craft/${_id}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(info),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if (data.modifiedCount > 0) {
+  //         toast.success(`${name} has been updated Successfully 🤩`);
+  //       }
+  //     });
+
+  //   form.reset();
+  // };
+
 
   const handleUpdateCraft = (e) => {
     e.preventDefault();
     const form = e.target;
-
+    const name = form.name.value;
+    const rating = form.rating.value;
+    const category = form.category.value;
+    const price = form.price.value;
+    const customization = form.customization.value;
+    const stockStatus = form.stockStatus.value;
+    const processing_time = form.processing_time.value;
+    const description = form.description.value;
+    const craftPhotoURL = form.craftPhotoURL.value;
+  
+    const email = user.email;
+    const userName = user.displayName;
+    const photoURL = user.photoURL;
+    const accountCreation = user.metadata?.creationTime;
+    const accountLastSignIn = user.metadata?.lastSignInTime;
+  
     const info = {
-      ...formData,
-      email: user.email,
-      userName: user.displayName,
-      photoURL: user.photoURL,
-      accountCreation: user.metadata?.creationTime,
-      accountLastSignIn: user.metadata?.lastSignInTime,
+      name,
+      rating,
+      category,
+      price,
+      customization,
+      stockStatus,
+      processing_time,
+      description,
+      craftPhotoURL,
+      photoURL,
+      email,
+      userName,
+      accountCreation,
+      accountLastSignIn,
     };
-
-    console.log(info);
-
-    // sending data to the server
-    fetch(`http://localhost:5000/craft/${_id}`, { 
-        method: 'PUT',
-        headers: {
-            "content-type": "application/json",
-        },
-        body: JSON.stringify(info)
+  
+    fetch(`http://localhost:5000/craft/${_id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(info),
     })
-    .then((res) => res.json())
+      .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount > 0) {
           toast.success(`${name} has been updated Successfully 🤩`);
         }
       });
-
     form.reset();
-
   };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
+  
 
   return (
     <section className="bg-gradient-to-r from-orange-50 to-teal-50">
@@ -86,7 +142,7 @@ const UpdateMyCraft = () => {
         </Helmet>
         <div className="text-center space-y-3 py-16">
           <h2 className="font-semibold text-2xl font-customPlaywrite">
-            Update your Craft 😍
+            Update Your Craft 😎
           </h2>
           <div className="flex gap-1 justify-center items-center pt-4">
             <h1 className="border-2 border-neutral-400 text-neutral-800 w-3"></h1>
@@ -108,8 +164,7 @@ const UpdateMyCraft = () => {
                     <input
                       type="text"
                       name="name"
-                      defaultValue={formData.name}
-                      onChange={handleChange}
+                      defaultValue={name}
                       placeholder="Handcrafted Wooden Chair"
                       className="input input-bordered w-full"
                     />
@@ -123,10 +178,11 @@ const UpdateMyCraft = () => {
                   <select
                     className="select select-bordered w-full"
                     name="category"
-                    defaultValue={formData.category}
-                    onChange={handleChange}
+                    defaultValue={category}
                   >
-                    <option disabled>Select One</option>
+                    <option disabled selected>
+                      Select One
+                    </option>
                     <option>Wooden Furniture</option>
                     <option>Wooden Sculptures</option>
                     <option>Wooden Home Decor</option>
@@ -153,8 +209,7 @@ const UpdateMyCraft = () => {
                     <input
                       type="text"
                       name="processing_time"
-                      defaultValue={formData.processing_time}
-                      onChange={handleChange}
+                      defaultValue={processing_time}
                       placeholder="Ex :  5-7 days"
                       className="input input-bordered w-full"
                     />
@@ -169,8 +224,7 @@ const UpdateMyCraft = () => {
                     <input
                       type="number"
                       name="price"
-                      value={formData.price}
-                      onChange={handleChange}
+                      defaultValue={price}
                       placeholder="999"
                       className="input input-bordered w-full"
                     />
@@ -189,10 +243,11 @@ const UpdateMyCraft = () => {
                   <select
                     className="select select-bordered w-full"
                     name="customization"
-                    value={formData.customization}
-                    onChange={handleChange}
+                    defaultValue={customization}
                   >
-                    <option disabled>Select One</option>
+                    <option disabled selected>
+                      Select One
+                    </option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
@@ -206,8 +261,7 @@ const UpdateMyCraft = () => {
                     <input
                       type="number"
                       name="rating"
-                      value={formData.rating}
-                      onChange={handleChange}
+                      defaultValue={rating}
                       placeholder="5"
                       className="input input-bordered w-full"
                       max="5"
@@ -228,10 +282,11 @@ const UpdateMyCraft = () => {
                   <select
                     className="select select-bordered w-full"
                     name="stockStatus"
-                    value={formData.stockStatus}
-                    onChange={handleChange}
+                    defaultValue={stockStatus}
                   >
-                    <option disabled>Select One</option>
+                    <option disabled selected>
+                      Select One
+                    </option>
                     <option>In Stock</option>
                     <option>Made to Order</option>
                     <option>Out of Stock</option>
@@ -247,43 +302,36 @@ const UpdateMyCraft = () => {
                     <input
                       type="text"
                       name="craftPhotoURL"
-                      value={formData.craftPhotoURL}
-                      onChange={handleChange}
-                      placeholder="photo url"
+                      defaultValue={craftPhotoURL}
+                      placeholder="https://craft-img.jpg"
                       className="input input-bordered w-full"
                     />
                   </label>
                 </div>
               </div>
 
-              {/* Form Description */}
-              <div className="flex flex-col mb-7">
+              {/* Form description  */}
+              <div className="flex flex-col md:flex-row lg:flex-row gap-4 mb-7">
                 <div className="form-control w-full">
                   <label className="label">
                     <span className="label-text font-semibold">
                       Description
                     </span>
                   </label>
-                  <label className="input-group">
-                    <textarea
-                      name="description"
-                      value={formData.description}
-                      onChange={handleChange}
-                      placeholder="This handcrafted chair is made from the finest quality of wood and features a sleek, modern design. It's perfect for any home or office."
-                      className="textarea textarea-bordered w-full"
-                    />
-                  </label>
+                  <textarea
+                    name="description"
+                    defaultValue={description}
+                    placeholder="A versatile jute bag for everyday use..."
+                    className="textarea textarea-bordered textarea-sm w-full"
+                  ></textarea>
                 </div>
               </div>
 
-              <div className="form-control mt-6">
-                <button
-                  className="btn bg-gradient-to-r from-teal-300 to-orange-200 border-0 font-bold"
-                  type="submit"
-                >
-                  Update
-                </button>
-              </div>
+              <input
+                type="submit"
+                value="Add Craft"
+                className="btn btn-block bg-orange-500 hover:bg-teal-600 font-semibold text-xl"
+              />
             </form>
           </div>
         </section>
