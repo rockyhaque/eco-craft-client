@@ -7,6 +7,8 @@ const Users = () => {
   const loadedUsers = useLoaderData();
   const [user, setUsers] = useState(loadedUsers);
 
+  console.log(user);
+
 
   const handleUserDelete = (id) => {
     Swal.fire({
@@ -38,6 +40,7 @@ const Users = () => {
       }
     });
   };
+  
   return (
     <section className="bg-gradient-to-r from-emerald-200 to-orange-100">
 

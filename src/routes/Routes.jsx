@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
       {
         path: "/allCraft",
         element: <AllCraft></AllCraft>,
-        loader: () => fetch('http://localhost:5000/craft')
+        loader: () => fetch("http://localhost:5000/craft"),
       },
       {
         path: "/myCraft",
@@ -61,20 +61,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/updateMyCraft/:id",
-        element: (
-          
-            <UpdateMyCraft></UpdateMyCraft>
-          
-        ),
+        element: <PrivateRoute><UpdateMyCraft></UpdateMyCraft>,</PrivateRoute>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/craft/${params.id}`),
       },
       {
         path: "/users",
-        element: <PrivateRoute><Users></Users></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/user')
-
-      }
+        element: (
+          <PrivateRoute>
+            <Users></Users>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("http://localhost:5000/user"),
+      },
     ],
   },
 ]);

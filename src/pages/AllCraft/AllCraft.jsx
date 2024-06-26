@@ -1,26 +1,15 @@
 // import { useEffect, useState } from "react";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 // import CraftTable from "../../components/CraftTable/CraftTable";
 
 const AllCraft = () => {
-  //   const [items, setItems] = useState([]);
-
-  //   useEffect(() => {
-  //     fetch(`http://localhost:5000/craft`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setItems(data);
-  //       });
-  //   }, []);
-
-  //   console.log(items);
-
   const loadedCraft = useLoaderData();
   const [crafts, setCrafts] = useState(loadedCraft);
 
-  console.log(crafts);
+  const {name, category, email, price, userName, craftPhotoURL, stockStatus} = crafts;
+
 
   return (
     <div>
@@ -38,15 +27,68 @@ const AllCraft = () => {
         </div>
       </div>
 
-      {/* Table */}
       {/* <div>
         {
             crafts.map(craft => <CraftTable key={craft._id} craft={craft} crafts={crafts} setCrafts={setCrafts}></CraftTable>)
         }
       </div> */}
 
-      
+      {/* Table root */}
+      <div>
+        <div className="overflow-x-auto">
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>Craft Info</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* row 1 */}
+              {
+                crafts.map((craft) => <tr key={craft._id}>
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle h-12 w-12">
+                          <img
+                            src={craft.craftPhotoURL}
+                            alt="Avatar Tailwind CSS Component"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-bold">{craft.name}</div>
+                        <div className="text-sm opacity-50">{craft.stockStatus}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    {craft.category}
+                  </td>
+                  <td>
+                    <span className="badge badge-ghost badge-sm">
+                    {craft.price}
+                    </span>
+                  </td>
+                  <td>{craft.userName}</td>
+                  <td>{craft.email}</td>
+                  <th>
+                    <Link className="btn text-white bg-teal-600  btn-md ">View Details</Link>
+                  </th>
+                </tr>)
+              }
 
+            </tbody>
+            
+          </table>
+        </div>
+      </div>
     </div>
   );
 };

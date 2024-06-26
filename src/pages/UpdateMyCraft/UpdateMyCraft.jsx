@@ -94,11 +94,6 @@ const UpdateMyCraft = () => {
     const description = form.description.value;
     const craftPhotoURL = form.craftPhotoURL.value;
   
-    const email = user.email;
-    const userName = user.displayName;
-    const photoURL = user.photoURL;
-    const accountCreation = user.metadata?.creationTime;
-    const accountLastSignIn = user.metadata?.lastSignInTime;
   
     const info = {
       name,
@@ -110,11 +105,6 @@ const UpdateMyCraft = () => {
       processing_time,
       description,
       craftPhotoURL,
-      photoURL,
-      email,
-      userName,
-      accountCreation,
-      accountLastSignIn,
     };
   
     fetch(`http://localhost:5000/craft/${_id}`, {
@@ -329,7 +319,7 @@ const UpdateMyCraft = () => {
 
               <input
                 type="submit"
-                value="Add Craft"
+                value="Update Craft"
                 className="btn btn-block bg-orange-500 hover:bg-teal-600 font-semibold text-xl"
               />
             </form>

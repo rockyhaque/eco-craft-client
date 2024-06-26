@@ -14,7 +14,8 @@ const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { googleLogin, githubLogin, setUser, createUser, setLoading } = useAuth();
+  const { googleLogin, githubLogin, setUser, createUser, setLoading } =
+    useAuth();
 
   //react hook form
   const {
@@ -24,38 +25,48 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const {email, name, password, photoURL} = data;
-    
-    try{
-        // create user in Firebase
-        await createUser(email, password);
-        
-        setLoading(true);
-        // update user profile
-        await updateProfile(auth.currentUser, {
-            displayName: name,
-            photoURL
-        });
+    const { email, name, password, photoURL } = data;
 
- 
-        // set user to state
+    try {
+      // create user in Firebase
+      await createUser(email, password);
 
-        setLoading(false)
-        setUser({
-          ...auth.currentUser,
-          displayName: name,
-            photoURL
-        })
+      setLoading(true);
+      // update user profile
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+        photoURL,
+      });
 
-        // window.location.reload();
+      // set user to state
+      setLoading(false);
+      setUser({
+        ...auth.currentUser,
+        displayName: name,
+        photoURL,
+      });
 
-        // Navigate to home or another page
-        navigate("/");
-        toast.success('Yay! User Created Successfully 🤩');
-    }
-    catch(error){
-        setError(error.message);
-        toast.error(`Opps! ${error.message}`);
+      // Make POST request to save user data on server
+      // const user = { email, name, photoURL };
+      // const response = await fetch("http://localhost:5000/user", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(user),
+      // });
+
+      // const result = await response.json();
+      // if (result.insertedId) {
+      //   toast.success("Yay! User Created Successfully 🤩");
+      // }
+
+      // Navigate to home or another page
+      navigate("/");
+      toast.success('Yay! User Created Successfully 🤩');
+    } catch (error) {
+      setError(error.message);
+      toast.error(`Opps! ${error.message}`);
     }
   };
 
@@ -64,6 +75,25 @@ const Register = () => {
       .then((result) => {
         setUser(result.user);
         console.log(result.user);
+
+        // new user has been created
+        // const createdAt = result.user.metadata.creationTime;
+        // const user = { email, createdAt: createdAt };
+        // fetch("http://localhost:5000/user/user", {
+        //   method: "POST",
+        //   headers: {
+        //     "content-type": "application/json",
+        //   },
+        //   body: JSON.stringify(user),
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => {
+        //     console.log(data);
+        //     if (data.insertedId) {
+        //       toast.success("User has been Created Successfully ✅");
+        //     }
+        //   });
+
         toast.success("Logged In Successfully 🤩");
         navigate(location?.state ? location.state : "/");
       })
@@ -241,7 +271,10 @@ const Register = () => {
                 </Link>
               </div>
               <div className="px-4 pb-2 pt-4">
-                <button type="submit" className="uppercase block w-full p-4 font-semibold text-lg rounded-full bg-orange-600 hover:bg-teal-600 focus:outline-none">
+                <button
+                  type="submit"
+                  className="uppercase block w-full p-4 font-semibold text-lg rounded-full bg-orange-600 hover:bg-teal-600 focus:outline-none"
+                >
                   Register
                 </button>
               </div>
@@ -254,5 +287,3 @@ const Register = () => {
 };
 
 export default Register;
-
-

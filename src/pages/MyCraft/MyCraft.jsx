@@ -8,7 +8,7 @@ const MyCraft = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/craft/${user?.email}`)
+    fetch(`http://localhost:5000/myCraft/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setItems(data);
