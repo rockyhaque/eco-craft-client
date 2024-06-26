@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
 import { Slide } from "react-awesome-reveal";
 import { useEffect, useState } from "react";
+
 // import { useEffect, useState } from "react";
 
 const Navbar = () => {
@@ -18,10 +19,10 @@ const Navbar = () => {
   }, [theme]);
 
   const handleThemeToggle = (e) => {
-    if(e.target.checked){
+    if (e.target.checked) {
       setTheme("dracula");
-    } else{
-      setTheme("light")
+    } else {
+      setTheme("light");
     }
   };
 
@@ -35,6 +36,8 @@ const Navbar = () => {
         console.error(error);
       });
   };
+
+
 
   // useEffect(() => {
   //   setCurrentUser(user);
@@ -118,7 +121,8 @@ const Navbar = () => {
               to="/"
               className="text-md md:text-xl lg:text-3xl font-bold bg-gradient-to-r from-orange-400 to-teal-800 bg-clip-text text-transparent "
             >
-              <span className="">Eco</span> Craft
+              <span>Eco</span> Craft
+              
             </Link>
           </Slide>
         </div>
@@ -128,7 +132,6 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end">
-
         <div>
           <label className="cursor-pointer grid place-items-center ml-6 mr-2 md:mr-4">
             <input

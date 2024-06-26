@@ -1,6 +1,9 @@
-
+import { useTypewriter } from 'react-simple-typewriter';
 
 const Slider = () => {
+  const [text] = useTypewriter({
+    words: ['Exclusive Discount!', 'Fresh Arrivals!', 'Limited Time Offer!']
+})
   return (
     <div>
       <div className="carousel w-full h-[85vh] md:h-[55vh] lg:h-[60vh]">
@@ -12,7 +15,7 @@ const Slider = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent"></div>
           <div className="absolute left-5 right-5 top-1/2 transform -translate-y-1/2 flex flex-col items-center justify-center">
             <div className="bg-white bg-opacity-30 backdrop-blur-md p-12 md:p-20 rounded-lg text-center">
-              <h2 className="text-xl md:text-6xl font-bold text-white mb-4">Exclusive Discount!</h2>
+              <h2 className="text-xl md:text-6xl font-bold text-white mb-4">{text}</h2>
               <p className="text-md md:text-3xl text-white">Save up to 50% on selected items</p>
             </div>
           </div>
@@ -33,7 +36,7 @@ const Slider = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent"></div>
           <div className="absolute left-5 right-5 top-1/2 transform -translate-y-1/2 flex flex-col items-center justify-center">
             <div className="bg-white bg-opacity-30 backdrop-blur-md p-12 md:p-20 rounded-lg text-center">
-              <h2 className="text-xl md:text-6xl font-bold text-white mb-4">Fresh Arrivals!</h2>
+            <h2 className="text-xl md:text-6xl font-bold text-white mb-4">{text}</h2>
               <p className="text-md md:text-3xl text-white">Discover our new collection</p>
             </div>
           </div>
@@ -54,8 +57,8 @@ const Slider = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent"></div>
           <div className="absolute left-5 right-5 top-1/2 transform -translate-y-1/2 flex flex-col items-center justify-center">
             <div className="bg-white bg-opacity-30 backdrop-blur-md p-12 md:p-20 rounded-lg text-center">
-              <h2 className="text-xl md:text-6xl font-bold text-white mb-4">Limited Time Offer!</h2>
-              <p className="text-md md:text-3xl text-white">Hurry up, don't miss out!</p>
+            <h2 className="text-xl md:text-6xl font-bold text-white mb-4">{text}</h2>
+              <p className="text-md md:text-3xl text-white">Hurry up, don&apos;t miss out!</p>
             </div>
           </div>
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
