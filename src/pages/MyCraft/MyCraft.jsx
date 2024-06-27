@@ -10,7 +10,7 @@ const MyCraft = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/myCraft/${user.email}`)
+      fetch(`https://eco-craft-server-phi.vercel.app/myCraft/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setItems(data);
@@ -43,7 +43,12 @@ const MyCraft = () => {
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 place-items-center gap-6 max-w-screen-xl mx-auto mb-6 md:mb-10 lg:mb-28">
           {items.length > 0 ? (
             items.map((craft) => (
-              <MyCraftCard craft={craft} key={craft._id} items={items} setItems={setItems} />
+              <MyCraftCard
+                craft={craft}
+                key={craft._id}
+                items={items}
+                setItems={setItems}
+              />
             ))
           ) : (
             <div className="flex justify-center items-center min-h-[calc(100vh-383px)] w-full">
@@ -51,7 +56,6 @@ const MyCraft = () => {
             </div>
           )}
         </div>
-
       )}
     </div>
   );

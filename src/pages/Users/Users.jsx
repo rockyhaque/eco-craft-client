@@ -5,8 +5,7 @@ import Swal from "sweetalert2";
 
 const Users = () => {
   const loadedUsers = useLoaderData();
-  const [user, setUsers] = useState(loadedUsers)
-
+  const [user, setUsers] = useState(loadedUsers);
 
   const handleUserDelete = (id) => {
     Swal.fire({
@@ -19,7 +18,7 @@ const Users = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/user/${id}`, {
+        fetch(`https://eco-craft-server-phi.vercel.app/user/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -38,11 +37,9 @@ const Users = () => {
       }
     });
   };
-  
+
   return (
     <section className="bg-gradient-to-r from-emerald-200 to-orange-100">
-
-
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

@@ -62,7 +62,7 @@ const UpdateMyCraft = () => {
   //   console.log(info);
 
   //   // sending data to the server
-  //   fetch(`http://localhost:5000/craft/${_id}`, {
+  //   fetch(`https://eco-craft-server-phi.vercel.app/craft/${_id}`, {
   //     method: "PUT",
   //     headers: {
   //       "content-type": "application/json",
@@ -105,7 +105,7 @@ const UpdateMyCraft = () => {
       craftPhotoURL,
     };
 
-    fetch(`http://localhost:5000/craft/${_id}`, {
+    fetch(`https://eco-craft-server-phi.vercel.app/craft/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -138,7 +138,7 @@ const UpdateMyCraft = () => {
           </div>
         </div>
 
-        <section >
+        <section>
           <div className=" px-24 py-6 ">
             <form onSubmit={handleUpdateCraft}>
               {/* Form name and category Row */}

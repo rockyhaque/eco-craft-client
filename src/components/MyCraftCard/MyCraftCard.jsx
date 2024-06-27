@@ -3,10 +3,9 @@ import { IoIosStar } from "react-icons/io";
 import { BiCategoryAlt } from "react-icons/bi";
 import { IoTimeOutline } from "react-icons/io5";
 import { MdOutlineDesignServices } from "react-icons/md";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-
 
 const MyCraftCard = ({ craft, items, setItems }) => {
   const {
@@ -32,7 +31,7 @@ const MyCraftCard = ({ craft, items, setItems }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/craft/${_id}`, {
+        fetch(`https://eco-craft-server-phi.vercel.app/craft/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -61,11 +60,8 @@ const MyCraftCard = ({ craft, items, setItems }) => {
     );
   }
 
-  
-
   return (
     <div className="border p-4 rounded-xl shadow-md w-full ">
-      
       <div className="flex flex-col md:flex-row">
         <div className="flex-none w-full md:w-48 relative mb-4 md:mb-0">
           <img
@@ -90,9 +86,7 @@ const MyCraftCard = ({ craft, items, setItems }) => {
           <div className="mt-4 mb-6 pb-6 border-b border-slate-200">
             <div className="flex items-center gap-3">
               <BiCategoryAlt />
-              <span className="bg-teal-300 rounded-full px-4 ">
-                {category}
-              </span>
+              <span className="bg-teal-300 rounded-full px-4 ">{category}</span>
             </div>
             <div className="flex items-center gap-3 mt-2">
               <IoTimeOutline />
@@ -103,7 +97,8 @@ const MyCraftCard = ({ craft, items, setItems }) => {
           </div>
           <div className="flex space-x-4 mb-6 text-sm font-medium">
             <div className="flex-auto flex space-x-4">
-              <Link to={`/updateMyCraft/${_id}`}
+              <Link
+                to={`/updateMyCraft/${_id}`}
                 className="btn text-teal-900 bg-teal-300 hover:bg-transparent hover:font-bold"
                 type="button"
               >

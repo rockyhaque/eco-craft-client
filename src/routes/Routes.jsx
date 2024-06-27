@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/craft"),
+        loader: () => fetch("https://eco-craft-server-phi.vercel.app/craft"),
       },
       {
         path: "/login",
@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Contact></Contact>
+        element: <Contact></Contact>,
       },
       {
         path: "/register",
@@ -40,12 +40,13 @@ export const router = createBrowserRouter([
       {
         path: "/allCraft",
         element: <AllCraft></AllCraft>,
-        loader: () => fetch("http://localhost:5000/craft"),
+        loader: () => fetch("https://eco-craft-server-phi.vercel.app/craft"),
       },
       {
         path: "/craftDetails/:id",
         element: <ViewDetails></ViewDetails>,
-        loader: ({params}) => fetch(`http://localhost:5000/craft/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`https://eco-craft-server-phi.vercel.app/craft/${params.id}`),
       },
       {
         path: "/myCraft",
@@ -73,9 +74,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "/updateMyCraft/:id",
-        element: <PrivateRoute><UpdateMyCraft></UpdateMyCraft>,</PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <UpdateMyCraft></UpdateMyCraft>,
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/craft/${params.id}`),
+          fetch(`https://eco-craft-server-phi.vercel.app/craft/${params.id}`),
       },
       {
         path: "/users",
@@ -84,7 +89,7 @@ export const router = createBrowserRouter([
             <Users></Users>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/user"),
+        loader: () => fetch("https://eco-craft-server-phi.vercel.app/user"),
       },
     ],
   },
