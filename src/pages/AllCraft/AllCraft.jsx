@@ -8,7 +8,7 @@ const AllCraft = () => {
   const loadedCraft = useLoaderData();
   const [crafts, setCrafts] = useState(loadedCraft);
 
-  const {name, category, email, price, userName, craftPhotoURL, stockStatus} = crafts;
+  const {_id, name, category, email, price, userName, craftPhotoURL, stockStatus} = crafts;
 
 
   return (
@@ -73,7 +73,7 @@ const AllCraft = () => {
                   <td>{craft.userName}</td>
                   <td>{craft.email}</td>
                   <th>
-                    <Link className="btn text-white bg-teal-600  btn-md">View Details</Link>
+                    <Link to={`/craftDetails/${craft._id}`} className="btn text-white bg-teal-600  btn-md">View Details</Link>
                   </th>
                 </tr>)
               }

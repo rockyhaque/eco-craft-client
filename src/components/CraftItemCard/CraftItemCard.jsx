@@ -1,16 +1,18 @@
 import { IoIosStar } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const CraftItemCard = ({ craft }) => {
-  const { name, category, email, price, userName, photoURL, craftPhotoURL, stockStatus, rating, processing_time, description } =
+  const { id } = useParams();
+
+  const { _id, name, category, email, price, userName, photoURL, craftPhotoURL, stockStatus, rating, processing_time, description } =
     craft;
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="">
       <div className="relative pt-2 lg:pt-2 ">
 
-          <div className="w-full bg-white p-5  bg-opacity-40 backdrop-filter backdrop-blur-lg">
+          <div className="">
             <div className="w-12/12 mx-auto rounded-2xl bg-white p-5 bg-opacity-40 backdrop-filter backdrop-blur-lg">
-              <div className="">
+              <Link>
                 <article className="bg-white  p-6 mb-6 shadow transition duration-300 group transform hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer border">
 
                   <div className="relative mb-4 rounded-2xl">
@@ -96,11 +98,11 @@ const CraftItemCard = ({ craft }) => {
                     </p>
                   </h3>
                   <div className="text-center mt-4">
-                    <Link className="btn btn-wide  bg-gradient-to-r from-emerald-300 to-orange-400 font-semibold text-lg">View Details</Link>
+                    <Link to={`/craftDetails/${craft._id}`} className="btn btn-wide hover:bg-gradient-to-l bg-gradient-to-r from-emerald-300 to-orange-400 font-semibold text-lg">View Details</Link>
                   </div>
                 </article>
                 
-              </div>
+              </Link>
             </div>
           </div>
         
