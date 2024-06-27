@@ -1,6 +1,7 @@
 import { useTypewriter } from 'react-simple-typewriter';
 
 const Slider = () => {
+  
   const [text] = useTypewriter({
     words: ['Exclusive Discount!', 'Fresh Arrivals!', 'Limited Time Offer!']
 })

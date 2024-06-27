@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
-// import CraftTable from "../../components/CraftTable/CraftTable";
+
 
 const AllCraft = () => {
   const loadedCraft = useLoaderData();
@@ -27,14 +27,8 @@ const AllCraft = () => {
         </div>
       </div>
 
-      {/* <div>
-        {
-            crafts.map(craft => <CraftTable key={craft._id} craft={craft} crafts={crafts} setCrafts={setCrafts}></CraftTable>)
-        }
-      </div> */}
-
       {/* Table root */}
-      <div>
+      <div className="max-w-screen-xl mx-auto">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
@@ -79,7 +73,7 @@ const AllCraft = () => {
                   <td>{craft.userName}</td>
                   <td>{craft.email}</td>
                   <th>
-                    <Link className="btn text-white bg-teal-600  btn-md ">View Details</Link>
+                    <Link className="btn text-white bg-teal-600  btn-md">View Details</Link>
                   </th>
                 </tr>)
               }

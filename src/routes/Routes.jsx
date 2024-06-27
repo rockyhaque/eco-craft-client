@@ -11,6 +11,7 @@ import AddCraft from "../pages/AddCraft/AddCraft";
 import PrivateRoute from "./PrivateRoute";
 import UpdateMyCraft from "../pages/UpdateMyCraft/UpdateMyCraft";
 import Users from "../pages/Users/Users";
+import ViewDetails from "../pages/ViewDetails/ViewDetails";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch("http://localhost:5000/craft"),
       },
       {
         path: "/login",
@@ -34,6 +36,10 @@ export const router = createBrowserRouter([
         path: "/allCraft",
         element: <AllCraft></AllCraft>,
         loader: () => fetch("http://localhost:5000/craft"),
+      },
+      {
+        path: "/craftDetails/:id",
+        element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>
       },
       {
         path: "/myCraft",

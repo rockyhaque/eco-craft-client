@@ -46,21 +46,6 @@ const Register = () => {
         photoURL,
       });
 
-      // Make POST request to save user data on server
-      // const user = { email, name, photoURL };
-      // const response = await fetch("http://localhost:5000/user", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(user),
-      // });
-
-      // const result = await response.json();
-      // if (result.insertedId) {
-      //   toast.success("Yay! User Created Successfully 🤩");
-      // }
-
       // Navigate to home or another page
       navigate("/");
       toast.success('Yay! User Created Successfully 🤩');
@@ -75,25 +60,6 @@ const Register = () => {
       .then((result) => {
         setUser(result.user);
         console.log(result.user);
-
-        // new user has been created
-        // const createdAt = result.user.metadata.creationTime;
-        // const user = { email, createdAt: createdAt };
-        // fetch("http://localhost:5000/user/user", {
-        //   method: "POST",
-        //   headers: {
-        //     "content-type": "application/json",
-        //   },
-        //   body: JSON.stringify(user),
-        // })
-        //   .then((res) => res.json())
-        //   .then((data) => {
-        //     console.log(data);
-        //     if (data.insertedId) {
-        //       toast.success("User has been Created Successfully ✅");
-        //     }
-        //   });
-
         toast.success("Logged In Successfully 🤩");
         navigate(location?.state ? location.state : "/");
       })
