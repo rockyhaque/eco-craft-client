@@ -17,7 +17,7 @@ const Slider = () => {
           <div className="absolute left-5 right-5 top-1/2 transform -translate-y-1/2 flex flex-col items-center justify-center">
             <div className="bg-white bg-opacity-30 backdrop-blur-md p-12 md:p-20 rounded-lg text-center">
               <h2 className="text-xl md:text-6xl font-bold text-white mb-4">{text}</h2>
-              <p className="text-md md:text-3xl text-white">Save up to 50% on selected items</p>
+              <p className="text-md md:text-3xl text-white">Save up to <span className='badge badge-lg badge-secondary'>50%</span> on selected items</p>
             </div>
           </div>
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">

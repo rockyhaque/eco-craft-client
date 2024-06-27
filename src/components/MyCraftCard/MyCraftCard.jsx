@@ -56,7 +56,7 @@ const MyCraftCard = ({ craft, items, setItems }) => {
   
 
   return (
-    <div className="border p-2 rounded-xl shadow-md w-full ">
+    <div className="border p-4 rounded-xl shadow-md w-full ">
       
       <div className="flex flex-col md:flex-row">
         <div className="flex-none w-full md:w-48 relative mb-4 md:mb-0">

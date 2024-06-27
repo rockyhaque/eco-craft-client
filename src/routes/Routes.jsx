@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import UpdateMyCraft from "../pages/UpdateMyCraft/UpdateMyCraft";
 import Users from "../pages/Users/Users";
 import ViewDetails from "../pages/ViewDetails/ViewDetails";
+import Contact from "../pages/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>
       },
       {
         path: "/register",

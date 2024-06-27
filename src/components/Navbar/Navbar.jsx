@@ -37,15 +37,13 @@ const Navbar = () => {
       });
   };
 
-
-
   // useEffect(() => {
   //   setCurrentUser(user);
   // }, [user])
 
   const navLinks = (
     <>
-      <li>
+      <li className="">
         <NavLink to="/">Home</NavLink>
       </li>
 
@@ -62,20 +60,24 @@ const Navbar = () => {
       )}
       {user && (
         <li>
-          <NavLink to="/myCraft">My Craft</NavLink>
-        </li>
-      )}
-      {user && (
-        <li>
           <NavLink to="/updateProfile">Update Profile</NavLink>
         </li>
       )}
       {user && (
         <li>
+          <NavLink to="/myCraft">My Craft</NavLink>
+        </li>
+      )}
+
+      {user && (
+        <li>
           <NavLink to="/addCraft">Add Craft</NavLink>
         </li>
       )}
-      
+
+      <li>
+        <NavLink to="/contact">Contact Us</NavLink>
+      </li>
     </>
   );
 
@@ -118,7 +120,6 @@ const Navbar = () => {
               className="text-md md:text-xl lg:text-3xl font-bold bg-gradient-to-r from-orange-400 to-teal-800 bg-clip-text text-transparent "
             >
               <span>Eco</span> Craft
-              
             </Link>
           </Slide>
         </div>

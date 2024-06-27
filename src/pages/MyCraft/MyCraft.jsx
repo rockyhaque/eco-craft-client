@@ -35,7 +35,7 @@ const MyCraft = () => {
       </div>
 
       {/* My all craft parent */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 place-items-center gap-6 max-w-screen-xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 place-items-center gap-6 max-w-screen-xl mx-auto">
         {items.length > 0 ? (
           items?.map((craft) => (
             <MyCraftCard craft={craft} key={craft._id} items={items} setItems={setItems}></MyCraftCard>

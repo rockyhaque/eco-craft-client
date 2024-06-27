@@ -1,3 +1,4 @@
+import Category from "../../components/Category/Category";
 import Pricing from "../../components/Pricing/Pricing";
 import Slider from "../../components/Slider/Slider";
 import Support from "../../components/Support/Support";
@@ -9,9 +10,10 @@ const Home = () => {
     return (
         <div>
             <Slider></Slider>
+            <Category></Category>
             <CraftItems></CraftItems>
-            <Support></Support>
             <Pricing></Pricing>
+            <Support></Support>
 
         </div>
     );
