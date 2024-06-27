@@ -42,19 +42,19 @@ const AddCraft = () => {
     };
 
     fetch("http://localhost:5000/craft", {
-        method: "POST",
-        headers: {
-            "content-type": "application/json",
-        },
-        body: JSON.stringify(info)
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(info),
     })
-    .then((res) => res.json())
-    .then(data => {
-        console.log(data);
-        if(data.insertedId){
-            toast.success(`${name} has been added Successfully 🤩`)
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        if (data.insertedId) {
+          toast.success(`${name} has been added Successfully 🤩`);
         }
-    });
+      });
     form.reset();
   };
 
@@ -66,7 +66,9 @@ const AddCraft = () => {
         </Helmet>
         <div className="text-center space-y-3 py-16">
           <h5 className="text-customTeal font-semibold text-xl ">Craft</h5>
-          <h2 className="font-semibold text-2xl font-customPlaywrite">Add your desired Craft 😍</h2>
+          <h2 className="font-semibold text-2xl font-customPlaywrite">
+            Add your desired Craft 😍
+          </h2>
           <div className="flex gap-1 justify-center items-center pt-4">
             <h1 className="border-2 border-neutral-400 text-neutral-800 w-3"></h1>
             <h1 className="border-2 border-neutral-900 bg-black w-8"></h1>
@@ -210,7 +212,9 @@ const AddCraft = () => {
                 </div>
                 <div className="form-control w-full md:w-1/2 lg:w-1/2">
                   <label className="label">
-                    <span className="label-text font-semibold">Craft Photo URL</span>
+                    <span className="label-text font-semibold">
+                      Craft Photo URL
+                    </span>
                   </label>
                   <label className="input-group">
                     <input
@@ -239,11 +243,13 @@ const AddCraft = () => {
                 </div>
               </div>
 
-              <input
-                type="submit"
-                value="Add Craft"
-                className="btn btn-block bg-orange-500 hover:bg-teal-600 font-semibold text-xl"
-              />
+              <div className="text-center">
+                <input
+                  type="submit"
+                  value="Add Craft"
+                  className="btn btn-md lg:btn-wide hover:bg-gradient-to-r bg-gradient-to-l from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg"
+                />
+              </div>
             </form>
           </div>
         </section>

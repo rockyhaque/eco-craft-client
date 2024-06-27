@@ -5,9 +5,7 @@ import Swal from "sweetalert2";
 
 const Users = () => {
   const loadedUsers = useLoaderData();
-  const [user, setUsers] = useState(loadedUsers);
-
-  console.log(user);
+  const [user, setUsers] = useState(loadedUsers)
 
 
   const handleUserDelete = (id) => {

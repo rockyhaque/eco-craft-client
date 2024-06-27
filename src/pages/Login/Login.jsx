@@ -41,6 +41,7 @@ const Login = () => {
         setUser(result.user);
         console.log(result.user);
         toast.success("Logged In Successfully 🤩");
+    navigate("/")
       })
       .catch((error) => {
         setError(error.message);
@@ -52,8 +53,9 @@ const Login = () => {
     githubLogin()
       .then((result) => {
         setUser(result.user);
-        console.log(result.user);
+        // console.log(result.user);
         toast.success("Logged In Successfully 🤩");
+        navigate("/")
         // navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {

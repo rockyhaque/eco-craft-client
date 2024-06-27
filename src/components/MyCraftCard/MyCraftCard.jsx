@@ -37,7 +37,7 @@ const MyCraftCard = ({ craft, items, setItems }) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
@@ -52,6 +52,14 @@ const MyCraftCard = ({ craft, items, setItems }) => {
       }
     });
   };
+
+  if (!craft) {
+    return (
+      <div>
+        <span className="loading loading-dots loading-lg"></span>
+      </div>
+    );
+  }
 
   
 

@@ -8,7 +8,7 @@ const UpdateMyCraft = () => {
   const { user } = useAuth() || {};
   const craft = useLoaderData();
 
-  console.log(craft);
+  // console.log(craft);
 
   const {
     _id,
@@ -80,7 +80,6 @@ const UpdateMyCraft = () => {
   //   form.reset();
   // };
 
-
   const handleUpdateCraft = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -93,8 +92,7 @@ const UpdateMyCraft = () => {
     const processing_time = form.processing_time.value;
     const description = form.description.value;
     const craftPhotoURL = form.craftPhotoURL.value;
-  
-  
+
     const info = {
       name,
       rating,
@@ -106,7 +104,7 @@ const UpdateMyCraft = () => {
       description,
       craftPhotoURL,
     };
-  
+
     fetch(`http://localhost:5000/craft/${_id}`, {
       method: "PUT",
       headers: {
@@ -122,7 +120,6 @@ const UpdateMyCraft = () => {
       });
     form.reset();
   };
-  
 
   return (
     <section className="bg-gradient-to-r from-orange-50 to-teal-50">
@@ -141,8 +138,8 @@ const UpdateMyCraft = () => {
           </div>
         </div>
 
-        <section>
-          <div className=" px-24 py-6">
+        <section >
+          <div className=" px-24 py-6 ">
             <form onSubmit={handleUpdateCraft}>
               {/* Form name and category Row */}
               <div className="flex flex-col md:flex-row lg:flex-row gap-4 mb-7">
@@ -317,11 +314,13 @@ const UpdateMyCraft = () => {
                 </div>
               </div>
 
-              <input
-                type="submit"
-                value="Update Craft"
-                className="btn btn-block bg-orange-500 hover:bg-teal-600 font-semibold text-xl"
-              />
+              <div className="text-center">
+                <input
+                  type="submit"
+                  value="Update Craft"
+                  className="btn btn-md lg:btn-wide hover:bg-gradient-to-r bg-gradient-to-l from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg"
+                />
+              </div>
             </form>
           </div>
         </section>

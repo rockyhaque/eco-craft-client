@@ -133,12 +133,14 @@ const UpdateProfile = () => {
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
           />
         </div>
+        <div className="text-center">
         <button
           type="submit"
-          className="w-full bg-orange-600 text-white py-2 rounded-lg font-semibold hover:bg-teal-600 transition duration-300"
+          className=" btn btn-md lg:btn-wide hover:bg-gradient-to-r bg-gradient-to-l from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg"
         >
           Save Changes
         </button>
+        </div>
       </form>
       {error && <div className="text-red-500 mt-4">{error}</div>}
       {success && <div className="text-green-500 mt-4">{success}</div>}

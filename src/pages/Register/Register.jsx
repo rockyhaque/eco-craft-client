@@ -59,7 +59,7 @@ const Register = () => {
     googleLogin()
       .then((result) => {
         setUser(result.user);
-        console.log(result.user);
+        // console.log(result.user);
         toast.success("Logged In Successfully 🤩");
         navigate(location?.state ? location.state : "/");
       })
@@ -73,7 +73,7 @@ const Register = () => {
     githubLogin()
       .then((result) => {
         setUser(result.user);
-        console.log(result.user);
+        // console.log(result.user);
         toast.success("Logged In Successfully 🤩");
         // navigate(location?.state ? location.state : "/");
       })

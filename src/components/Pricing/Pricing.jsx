@@ -25,7 +25,7 @@ const Pricing = () => {
   };
 
   return (
-    <div className="text-gray-900 bg-no-repeat bg-left-bottom sm:bg-svg-bottom mb-12">
+    <div className="text-gray-900 bg-no-repeat bg-left-bottom sm:bg-svg-bottom mb-12 mt-20">
 
       <h1 className="text-center font-extrabold text-lg md:text-xl lg:text-3xl mt-8 tracking-wide relative font-customPlaywrite">
         Our Pricing

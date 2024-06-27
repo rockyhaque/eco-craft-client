@@ -14,7 +14,7 @@ const ViewDetails = () => {
 
   const [craft, setCraft] = useState(singleCraft);
 
-  console.log(craft);
+  // console.log(craft);
 
   const {
     _id,
@@ -194,7 +194,7 @@ const ViewDetails = () => {
               </div>
             </div>
           </div>
-          <div className="text-center mt-8">
+          <div className="text-center mt-8 hidden">
             <Link to="/login" className="btn btn-wide hover:bg-gradient-to-l bg-gradient-to-r from-emerald-300 to-orange-400 font-semibold text-lg">
               Buy Now
             </Link>

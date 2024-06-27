@@ -29,7 +29,7 @@ const AllCraft = () => {
 
       {/* Table root */}
       <div className="max-w-screen-xl mx-auto">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mb-8 md:mb-12 lg:mb-20">
           <table className="table">
             {/* head */}
             <thead>

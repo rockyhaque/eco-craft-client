@@ -6,23 +6,24 @@ import { Helmet } from "react-helmet";
 const MyCraft = () => {
   const { user } = useAuth() || {};
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myCraft/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setItems(data);
-      });
+    if (user?.email) {
+      fetch(`http://localhost:5000/myCraft/${user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setItems(data);
+          setLoading(false);
+        });
+    }
   }, [user]);
-
-  // console.log(items);
-
 
   return (
     <div>
       <Helmet>
-          <title>Eco Craft | My Craft</title>
-        </Helmet>
+        <title>Eco Craft | My Craft</title>
+      </Helmet>
       <div className="text-center space-y-3 py-16">
         <h2 className="font-semibold text-2xl font-customPlaywrite">
           My All Crafts 😍
@@ -34,18 +35,24 @@ const MyCraft = () => {
         </div>
       </div>
 
-      {/* My all craft parent */}
-      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 place-items-center gap-6 max-w-screen-xl mx-auto">
-        {items.length > 0 ? (
-          items?.map((craft) => (
-            <MyCraftCard craft={craft} key={craft._id} items={items} setItems={setItems}></MyCraftCard>
-          ))
-        ) : (
-          <div className="flex justify-center items-center min-h-[calc(100vh-383px)] w-full">
-            <p className="text-6xl font-bold">Opps! No Data Found</p>
-          </div>
-        )}
-      </div>
+      {loading ? (
+        <div className="flex justify-center items-center min-h-[calc(100vh-383px)] w-full">
+          <span className="loading loading-dots loading-lg"></span>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 place-items-center gap-6 max-w-screen-xl mx-auto mb-6 md:mb-10 lg:mb-28">
+          {items.length > 0 ? (
+            items.map((craft) => (
+              <MyCraftCard craft={craft} key={craft._id} items={items} setItems={setItems} />
+            ))
+          ) : (
+            <div className="flex justify-center items-center min-h-[calc(100vh-383px)] w-full">
+              <p className="text-6xl font-bold">Opps! No Data Found</p>
+            </div>
+          )}
+        </div>
+
+      )}
     </div>
   );
 };

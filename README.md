@@ -1,6 +1,8 @@
-# Eco Craft - Jute & wooden Crafts
+# Eco Craft Client
 
 > A10 Type-02 Requirements
+
+`Category`: Jute & wooden Crafts
 
 ## Live Link: 
 
@@ -29,9 +31,31 @@ Eco Craft is an e-commerce platform dedicated to art and craft enthusiasts. It a
 
 ## Challenges Package Implementation
 
-- React-simple-typewriter: 
+- React Simple Typewriter: 
 https://www.npmjs.com/package/react-simple-typewriter
 
-- React-tooltip: 
+- React Tooltip: 
 https://react-tooltip.com/
 
+- React Awesome Reveal: 
+https://www.npmjs.com/package/react-awesome-reveal
+
+
+## Dependencies
+
+- **firebase** 
+- **moment** 
+- **prop-types** 
+- **react** 
+- **react-awesome-reveal** 
+- **react-dom** 
+- **react-helmet** 
+- **react-hook-form** 
+- **react-hot-toast** 
+- **react-icons** 
+- **react-router-dom** 
+- **react-simple-typewriter** 
+- **react-tooltip** 
+- **sweetalert2** 
+- **swiper** 
+- **tw-elements** 

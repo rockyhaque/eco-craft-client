@@ -29,7 +29,7 @@ const Navbar = () => {
   const handleLogout = () => {
     logout()
       .then(() => {
-        console.log("User Logged Out");
+        // console.log("User Logged Out");
         toast.success(`User Logged Out Successfully!`);
       })
       .catch((error) => {
@@ -117,9 +117,9 @@ const Navbar = () => {
           <Slide>
             <Link
               to="/"
-              className="text-md md:text-xl lg:text-3xl font-bold bg-gradient-to-r from-orange-400 to-teal-800 bg-clip-text text-transparent "
+              className="text-md md:text-xl lg:text-3xl font-bold bg-gradient-to-r from-amber-400 to-cyan-900 bg-clip-text text-transparent"
             >
-              <span>Eco</span> Craft
+              <span>Eco Craft</span> 
             </Link>
           </Slide>
         </div>
